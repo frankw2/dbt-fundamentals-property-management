@@ -1,0 +1,146 @@
+version: 2
+
+sources:
+  - name: property_management
+    database: raw
+
+    schema: property_management
+    tables:
+      - name: rental_applications
+        description: Rental application information
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: email_delivery_statuses
+        description: Check if emails have been delivered
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+      - name: emails
+        description: All emails sent
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: tenants
+        description: Information about tenants
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: properties
+        description: Information about properties
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: leases
+        description: Information about leases
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: bank_accounts
+        descriptions: Details on bank accounts
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: contact_infos
+        description: Detailed contact information
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: owners
+        description: Information about owners
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: vendors
+        description: Information about vendors
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: property_owners
+        description: Information about property owners
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: units
+        description: Information about units
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
+      - name: transactions
+        description: Information about transactions
+        loaded_at_field: uploaded_at
+        freshness:
+          warn_after: {count: 24, period: hour}
+          error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
