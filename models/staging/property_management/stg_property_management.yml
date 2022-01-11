@@ -4,18 +4,21 @@ models:
   - name: stg_bank_accounts
     columns:
       - name: bank_account_id
+        description: Primary key for bank account 
         tests:
           - unique
           - not_null
   - name: stg_contact_infos
     columns:
       - name: contact_info_id
+        description: Primary key for contact info
         tests:
           - unique
           - not_null
   - name: stg_email_delivery_statuses
     columns:
       - name: event
+        description: What happened to the email
         tests:
           - accepted_values:
               values: ['processing', 'rejected', 'delivered', 'opened', 'clicked', 'processed']
@@ -27,16 +30,19 @@ models:
   - name: stg_emails
     columns:
       - name: email_id
+        description: Primary key for emails
         tests:
           - unique
           - not_null
   - name: stg_leases
     columns:
       - name: lease_id
+        description: Primary key for leases
         tests:
           - unique
           - not_null
       - name: completed
+        description: Is lease complete?
         tests:
           - accepted_values:
               values: ['true', 'false']
@@ -53,6 +59,7 @@ models:
   - name: stg_owners
     columns:
       - name: owner_id
+        description: Primary key for owner
         tests:
           - unique
           - not_null
@@ -69,6 +76,7 @@ models:
   - name: stg_properties
     columns:
       - name: property_id
+        description: Primary key for a property
         tests:
           - unique
           - not_null
@@ -79,6 +87,7 @@ models:
   - name: stg_property_owners
     columns:
       - name: property_id
+        description: '{{ doc("property_owners_info")}}'
         tests:
           - relationships:
               to: ref('stg_properties')
@@ -91,9 +100,11 @@ models:
   - name: stg_rental_applications
     columns:
       - name: rental_application_id
+        description: Primary key for rental applications
           - unique
           - not_null
       - name: status
+        description: Status of the rental application
         tests:
           - accepted_values:
               values: ['denied', 'approved', 'converted_to_tenant']
@@ -105,6 +116,7 @@ models:
   - name: stg_tenants
     columns:
       - name: tenant_id
+        description: Primary key for tenant
         tests:
           - unique
           - not_null
@@ -126,6 +138,7 @@ models:
   - name: stg_transactions
     columns:
       - name: transaction_id
+        description: Primary key for an transaction
         tests:
           - unique
           - not_null
@@ -136,6 +149,7 @@ models:
   - name: stg_units
     columns:
       - name: unit_id
+        description: Primary key for a property unit
         tests:
           - unique
           - not_null
@@ -151,6 +165,7 @@ models:
   - name: stg_vendors
     columns:
       - name: vendor_id
+        description: Primary key for a vendor
         tests:
           - unique
           - not_null
