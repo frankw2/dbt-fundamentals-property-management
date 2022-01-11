@@ -1,0 +1,166 @@
+version: 2
+
+models:
+  - name: stg_bank_accounts
+    columns:
+      - name: bank_account_id
+        tests:
+          - unique
+          - not_null
+  - name: stg_contact_infos
+    columns:
+      - name: contact_info_id
+        tests:
+          - unique
+          - not_null
+  - name: stg_email_delivery_statuses
+    columns:
+      - name: event
+        tests:
+          - accepted_values:
+              values: ['processing', 'rejected', 'delivered', 'opened', 'clicked', 'processed']
+      - name: email_id
+        tests:
+          - relationships:
+              to: ref('stg_emails')
+              field: email_id
+  - name: stg_emails
+    columns:
+      - name: email_id
+        tests:
+          - unique
+          - not_null
+  - name: stg_leases
+    columns:
+      - name: lease_id
+        tests:
+          - unique
+          - not_null
+      - name: completed
+        tests:
+          - accepted_values:
+              values: ['true', 'false']
+      - name: unit_id
+        tests:
+          - relationships:
+              to: ref('stg_units')
+              field: unit_id
+      - name: rental_application_id
+        tests:
+          - relationships:
+              to: ref('stg_rental_applications')
+              field: rental_application_id
+  - name: stg_owners
+    columns:
+      - name: owner_id
+        tests:
+          - unique
+          - not_null
+      - name: contact_info_id
+        tests:
+          - relationships:
+              to: ref('stg_contact_infos')
+              field: contact_info_id
+      - name: bank_account_id
+        tests:
+          - relationships:
+              to: ref('stg_bank_accounts')
+              field: bank_account_id
+  - name: stg_properties
+    columns:
+      - name: property_id
+        tests:
+          - unique
+          - not_null
+      - name: type
+        tests:
+          - accepted_values:
+              values: ['commercial', 'homeowners_association', 'multi_family_residence', 'single_family_residence']
+  - name: stg_property_owners
+    columns:
+      - name: property_id
+        tests:
+          - relationships:
+              to: ref('stg_properties')
+              field: property_id
+      - name: owner_id
+        tests:
+          - relationships:
+              to: ref('stg_owners')
+              field: owner_id
+  - name: stg_rental_applications
+    columns:
+      - name: rental_application_id
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['denied', 'approved', 'converted_to_tenant']
+      - name: contact_info_id
+        tests:
+          - relationships:
+              to: ref('stg_contact_infos')
+              field: contact_info_id
+  - name: stg_tenants
+    columns:
+      - name: tenant_id
+        tests:
+          - unique
+          - not_null
+      - name: lease_id
+        tests:
+          - relationships:
+              to: ref('stg_leases')
+              field: lease_id
+      - name: bank_account_id
+        tests:
+          - relationships:
+              to: ref('stg_bank_accounts')
+              field: bank_account_id
+      - name: contact_info_id
+        tests:
+          - relationships:
+              to: ref('stg_contact_infos')
+              field: contact_info_id
+  - name: stg_transactions
+    columns:
+      - name: transaction_id
+        tests:
+          - unique
+          - not_null
+      - name: type
+        tests:
+          - accepted_values:
+              values: ['charge','credit']
+  - name: stg_units
+    columns:
+      - name: unit_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['occupied', 'rented', 'vacant', 'construction']
+      - name: property_id
+        tests:
+          - relationships:
+              to: ref('stg_properties')
+              field: property_id
+  - name: stg_vendors
+    columns:
+      - name: vendor_id
+        tests:
+          - unique
+          - not_null
+      - name: bank_account_id
+        tests:
+          - relationships:
+              to: ref('stg_bank_accounts')
+              field: bank_account_id
+      - name: contact_info_id
+        tests:
+          - relationships:
+              to: ref('stg_contact_infos')
+              field: contact_info_id

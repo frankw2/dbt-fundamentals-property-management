@@ -11,6 +11,11 @@ sources:
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: email_delivery_statuses
         loaded_at_field: uploaded_at
         freshness:
@@ -21,53 +26,108 @@ sources:
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: tenants
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: properties
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: leases
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: bank_accounts
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: contact_infos
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: owners
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: vendors
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: property_owners
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: units
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null
       - name: transactions
         loaded_at_field: uploaded_at
         freshness:
           warn_after: {count: 24, period: hour}
           error_after: {count: 48, period: hour}
+        columns: 
+          - name: id
+            tests: 
+              - unique
+              - not_null

@@ -8,7 +8,7 @@ payments as (
 
 final as (
     select
-        COUNT(*)
+        COUNT(*) as num
     from transactions
 
     left join payments

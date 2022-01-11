@@ -7,3 +7,8 @@ sources:
     schema: stripe
     tables:
       - name: payment
+        columns:
+          - name: id
+            tests: 
+              - unique
+              - not_null
